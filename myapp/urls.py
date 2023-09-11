@@ -5,10 +5,10 @@ from .views import test
 from .views import test1
 
 
-urlpatterns =[
-     path("", home),
+urlpatterns =[ 
      path("python/", school),
      path("test/", test),
-     path("test1/", test1)
+     path("test1/", test1),
+     path("", test1)
 ]
 
