@@ -1,0 +1,27 @@
+{% extends 'temp_inheritance/base.html' %}
+{% load static %}
+
+{% block content %}
+    <img src = "{% static 'temp_inheritance/cover.webp' %}" style="width: 100%">
+       <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Address</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for info in people %}
+
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{info.name}}</td>
+            <td>{{info.age}}</td>
+            <td>{{info.address}}</td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+{% endblock %}
