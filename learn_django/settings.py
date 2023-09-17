@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'temp_inheritance',
+    'tables',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

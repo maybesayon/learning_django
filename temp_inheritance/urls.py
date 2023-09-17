@@ -3,7 +3,7 @@ from .views import main, features, pricing
 
 urlpatterns = [
     path("features/", features, name = 'features'),
-    path ("pricing/", pricing, name = pricing),
+    path ("pricing/", pricing, name = 'pricing'),
     path("", main, name = 'home')
     
 ]

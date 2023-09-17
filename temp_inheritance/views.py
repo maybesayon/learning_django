@@ -19,4 +19,9 @@ def features(request):
     return render(request, template_name='temp_inheritance/features.html', context={"items":items})
 
 def pricing(request):
-    pass
+    prices = [
+        {"name": "Laptop", "price": "$1200"},
+        {"name": "Mouse", "price": "$200"},
+        {"name": "Keyboard", "price": "$300"}
+    ]
+    return render(request, template_name='temp_inheritance/pricing.html', context={"prices":prices})
