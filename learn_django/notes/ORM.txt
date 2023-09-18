@@ -1,0 +1,11 @@
+1. ORM stands for Object Relational Mapping
+2. It is a way to query the database without using the raw query.
+3. Rather than using a raw query, python object is used to query the database.
+
+4. If 'Student' is a table in a django project, then we can use following ORM to get
+all the students of the table.
+    students = Student.objects.all()  # ORM
+    print(students)
+    
+    Here "Student.objects.all()" is an ORM to get all the students. It's 
+    equivalent raw query is "SELECT * FROM STUDENT"
