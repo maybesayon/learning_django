@@ -1,0 +1,9 @@
+There are three types of Model relations
+    - One to One Relation
+    - One to Many Relation
+    - Many to Many Relation
+
+
+1. One to One Relation
+    ==> In one to one relation, relations are maintained uniquely.
+    If Studentis a model and StudentProfile is the model with one to one relation
