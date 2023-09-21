@@ -25,3 +25,4 @@ def pricing(request):
         {"name": "Keyboard", "price": "$300"}
     ]
     return render(request, template_name='temp_inheritance/pricing.html', context={"prices":prices})
+
