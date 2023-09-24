@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'myapp',
     'temp_inheritance',
     'tables',
+    'django_extensions',
+    
 ]
 
 
