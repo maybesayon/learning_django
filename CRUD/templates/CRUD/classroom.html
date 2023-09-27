@@ -1,0 +1,38 @@
+{% extends 'CRUD/base.html' %}
+
+{% block content %}
+<h1>Classroom</h1>
+<a style = "float: right" class="btn btn-primary" href = "#">Student</a>
+<br>
+<form method = "post" action="{% url 'crud_classroom' %}">
+  {% csrf_token %}
+    <label>Name:</label>
+    <input type = "text" style= "width:30%" class = "form-control" name = "name">
+    <br>
+    <button class="btn btn-success" type="submit">Submit</button>
+</form><br><br>
+
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">S.N</th>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for classroom in classrooms %}
+
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{classroom.name}}</td>
+        <td>
+          <a class="btn btn-primary" href= "#">Update</a>
+          <a class="btn btn-danger" href = "#">Delete</a>
+        </td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}
