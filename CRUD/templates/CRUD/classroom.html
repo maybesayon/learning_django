@@ -27,8 +27,8 @@
         <th scope="row">{{forloop.counter}}</th>
         <td>{{classroom.name}}</td>
         <td>
-          <a class="btn btn-primary" href= "#">Update</a>
-          <a class="btn btn-danger" href = "#">Delete</a>
+          <a class="btn btn-primary" href= "{% url 'classroom_update' classroom.id %}">Update</a>
+          <a class="btn btn-danger" href = "{% url 'classroom_delete' classroom.id %}">Delete</a>
         </td>
         {% endfor %}
       </tr>

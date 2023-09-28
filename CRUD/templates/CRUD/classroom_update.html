@@ -1,0 +1,14 @@
+{% extends "CRUD/base.html" %}
+
+{% block content %}
+    <form method="post", action="{% url 'classroom_update' classroom.id %}">
+        {% csrf_token %}
+        <h1>Classroom Update</h1>
+        <label>Name</label>
+        <input type="text" class="form-control", style="width: 30%;" value="{{classroom.name}}" name="name">
+        <br>
+        <a class="btn btn-primary" href="{% url 'crud_classroom' %}">Cancel</a>
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+
+{% endblock %}
