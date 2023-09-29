@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Classroom</h1>
-<a style = "float: right" class="btn btn-primary" href = "#">Student</a>
+<a style = "float: right" class="btn btn-primary" href = "{% url 'crud_student' %}">Student</a>
 <br>
 <form method = "post" action="{% url 'crud_classroom' %}">
   {% csrf_token %}
