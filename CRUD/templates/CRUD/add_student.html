@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>{{title}}</h1>
-<form class="row g-3" method="post" action="{% url 'add_student' %}">
+<form class="row g-3" method="post" action="{% url 'add_student' %}" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Name</label>
@@ -33,7 +33,7 @@
     </div> -->
     <div class="col-md-2">
       <label for="inputZip" class="form-label">Profile Picture</label>
-      <input type="File" class="form-control" id="Profile Picture">
+      <input type="File" class="form-control" id="Profile Picture" name="pp">
     </div>
     <div class="col-12">
       <button type="submit" class="btn btn-success">Submit</button>

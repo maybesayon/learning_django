@@ -28,8 +28,8 @@
         <td>{{student.classroom.name}}</td>
         <td>
           <a class="btn btn-primary" href= "#">Update</a>
-          <a class="btn btn-danger" href = "#">Delete</a>
-          <a class="btn btn-warning" href = "#">Detail</a>
+          <a class="btn btn-danger" href = "{% url 'delete_student' student.id %}">Delete</a>
+          <a class="btn btn-warning" href = "{% url 'student_detail' student.id %}">Detail</a>
         </td>
         {% endfor %}
       </tr>
