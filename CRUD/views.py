@@ -40,13 +40,16 @@ def add_student(request):
         address = request.POST.get("address")
         contact = request.POST.get("contact")
         pp = request.FILES.get("pp")
-        student=Student.objects.create(name=name, email=email, age=age, classroom_id=1)
+        classroom_name = request.POST.get("classroom_name")
+        classroom = ClassRoom.objects.get(name=classroom_name)
+        student=Student.objects.create(name=name, email=email, age=age, classroom=classroom)
         sp = StudentProfile.objects.create(address=address, contact=contact, student=student)
         if pp:
             sp.profile_picture=pp
             sp.save()
         return redirect("crud_student")
-    return render(request, template_name="CRUD/add_student.html", context={"title":"Add Student"})
+    classrooms = ClassRoom.objects.all()
+    return render(request, template_name="CRUD/add_student.html", context={"title":"Add Student", "classrooms":classrooms})
 
 def delete_student(request, id):
     student = Student.objects.get(id=id)
@@ -58,3 +61,21 @@ def delete_student(request, id):
 def student_detail(request, id):
     student = Student.objects.get(id=id)
     return render(request, template_name="CRUD/student_detail.html", context={"title":"Student detail", "student": student})
+
+def update_student(request, id):
+    student = Student.objects.get(id=id)
+    if request.method =="POST":
+         name = request.POST.get("name")
+         email = request.POST.get("email")
+         age = request.POST.get("age")
+         address = request.POST.get("address")
+         contact = request.POST.get("contact")
+         pp = request.FILES.get("pp")
+         Student.objects.filter(id=id).update(name=name, email=email, age=age) 
+         sp, _ = StudentProfile.objects.update_or_create(student=student, defaults={"address": address,
+                                                                                    "contact":contact})
+         if pp:
+             sp.profile_picture=pp
+             sp.save()
+         return redirect("crud_student")
+    return render(request, template_name="CRUD/update_student.html", context={"student":student, "title": "Update Student"})

@@ -12,26 +12,28 @@
       <label for="inputPassword4" class="form-label">Email</label>
       <input type="email" class="form-control" id="email" name="email">
     </div>
-    <div class="col-12">
+    <div class="col-6">
       <label for="inputAddress" class="form-label">Age</label>
       <input type="number" class="form-control" id="age" name="age">
     </div>
-    <div class="col-12">
+    <div class="col-6">
       <label for="inputAddress2" class="form-label">Address</label>
       <input type="text" class="form-control" id="inputAddress" name="address">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
       <label for="inputCity" class="form-label">contact</label>
-      <input type="text" class="form-control" id="contact" name="contact">
+      <input type="text" class="form-control" id="Contact" name="contact">
     </div>
-    <!-- <div class="col-md-4">
-      <label for="inputState" class="form-label">State</label>
-      <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
-        <option>...</option>
+    <div class="col-md-4">
+      <label for="inputState" class="form-label">Classroom</label>
+      <select id="inputState" class="form-select" name="classroom_name">
+        {% for classroom in classrooms %}
+          <option selected>{{classroom.name}}</option>
+        {% endfor %}
+        
       </select>
-    </div> -->
-    <div class="col-md-2">
+    </div>
+    <div class="col-md-3">
       <label for="inputZip" class="form-label">Profile Picture</label>
       <input type="File" class="form-control" id="Profile Picture" name="pp">
     </div>
