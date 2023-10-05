@@ -1,0 +1,39 @@
+{% extends "crud/base.html" %}
+
+{% block content %}
+<div style="float: right">
+    <a href="#" class="btn btn-success">Add Student</a>
+    <a href="#" class="btn btn-primary">Classroom</a>
+</div><br><br><br>
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">S.N</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">Classroom</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.classroom.name}}</td>
+        <td>
+          <a class="btn btn-primary" href= "#">Update</a>
+          <a class="btn btn-danger" href = "#">Delete</a>
+          <a class="btn btn-warning" href = "{% url 'classbased_student_detail' student.id %}">Detail</a>
+        </td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

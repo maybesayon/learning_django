@@ -1,0 +1,36 @@
+{% extends 'CRUD/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1>{{title}}</h1>
+        <a class="btn btn-primary" style="float: right;" href = "{% url 'classbased_student' %}">Student</a>
+    <br><br>
+    <div class="row">
+    <div class="col-md-4">
+        {% if student.studentprofile.profile_picture %}
+            <img src="{{student.studentprofile.profile_picture.url}}"style="height: 350px; width=100px">
+        {% else %}
+            <img src="{% static 'CRUD/default_pp.jpeg'%}"style="height: 350px; width=100px">
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <p><b>Name</b>: {{student.name}}</p>
+        <p><b>Email</b>: {{student.email}}</p>
+        <p><b>Age</b>: {{student.age}}</p>
+        <p><b>Classroom</b>: {{student.classroom.name}}</p>
+        {% if student.studentprofile %}
+            <p><b>Address</b>: {{student.studentprofile.address}}</p>
+            <p><b>Contact</b>: {{student.studentprofile.contact}}</p>
+        {% else %}
+        <p><b>Address</b>:N/A</p>
+        <p><b>Contact</b>:N/A</p>
+
+        {% endif %}
+
+
+
+    </div>
+</div>
+
+{% endblock %}
