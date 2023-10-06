@@ -58,3 +58,4 @@ class StudentDetailView(DetailView):
     def get_context_data(self, **kwargs):
         print(super().get_context_data(**kwargs))
         return super().get_context_data(**kwargs)
+    

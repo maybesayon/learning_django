@@ -25,6 +25,7 @@ urlpatterns = [
     path("tables/", include('tables.urls')),
     path("forms/", include('forms.urls')),
     path("classbased/", include('classbased.urls')),
+    path("api/", include("api.urls")),
     path("", include("CRUD.urls")),
     path("", include("myapp.urls")),
 
@@ -32,3 +33,6 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+    
