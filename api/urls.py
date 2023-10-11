@@ -1,5 +1,9 @@
 from django.urls import path
-from .views import hello_world, HelloWorldView, StudentView, StudentFromDBView, StudentFromDBListView, ProfileFromDBListView, ClassRoomFromDBView, ClassRoomFromDBListView, StudentDetailView, StudentListView, ProfileListView
+from .views import hello_world, HelloWorldView, StudentView, StudentFromDBView,\
+StudentFromDBListView, ProfileFromDBListView, ClassRoomFromDBView, ClassRoomFromDBListView, StudentDetailView,\
+StudentListView, ProfileListView, ClassRoomAPIView, ClassRoomCreateAPIView, ClassRoomUpdateAPIView, ClassRoomDetailAPIView,\
+ClassRoomDeleteAPIView
+
 urlpatterns = [
     path("hello-world/", hello_world),
     path("message/", HelloWorldView.as_view()),
@@ -15,3 +19,12 @@ urlpatterns = [
 
 
 ]
+generic_urls = [
+    path("generic-classroom-list/", ClassRoomAPIView.as_view()),
+    path("generic-classroom-create/", ClassRoomCreateAPIView.as_view()),
+    path("generic-classroom-update/<int:pk>/", ClassRoomUpdateAPIView.as_view()),
+    path("generic-classroom-detail/<int:pk>/", ClassRoomDetailAPIView.as_view()),
+    path("generic-classroom-delete/<int:pk>/", ClassRoomDeleteAPIView.as_view())
+]
+
+urlpatterns += generic_urls
