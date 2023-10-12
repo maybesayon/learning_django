@@ -19,7 +19,7 @@ class StudentDetailSerializer(serializers.Serializer):
 class StudentModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = ["name", "email", "age", "classroom"]
+        fields = ["id", "name", "email", "age", "classroom"]
 
 
     def get_fields(self):
@@ -33,7 +33,7 @@ class StudentModelSerializer(serializers.ModelSerializer):
 class StudentProfileModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentProfile
-        fields = ["student", "profile_picture", "address", "contact"]
+        fields = ["id", "student", "profile_picture", "address", "contact"]
 
     def get_fields(self):
         fields = super().get_fields()

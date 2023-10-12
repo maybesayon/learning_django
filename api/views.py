@@ -2,9 +2,12 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status 
-from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, RetrieveAPIView, DestroyAPIView
+from rest_framework.generics import ListAPIView,\
+CreateAPIView, UpdateAPIView, RetrieveAPIView, DestroyAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.viewsets import ModelViewSet
 from CRUD.models import Student, StudentProfile, ClassRoom
-from .serializers import ClassRoomSerializer, ClassRoomModelSerializer, StudentDetailSerializer, StudentModelSerializer, StudentProfileModelSerializer
+from .serializers import ClassRoomSerializer, ClassRoomModelSerializer,\
+StudentDetailSerializer, StudentModelSerializer, StudentProfileModelSerializer
 def hello_world(request):
     respose = {
         "message": "Hello World. I'm learning API."
@@ -187,3 +190,63 @@ class ClassRoomDetailAPIView(RetrieveAPIView):
 class ClassRoomDeleteAPIView(DestroyAPIView):
     queryset = ClassRoom.objects.all()
     serializer_class = ClassRoomModelSerializer
+    
+class StudentListAPIView(ListAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentModelSerializer
+
+class StudentCreateAPIView(CreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentModelSerializer
+
+class StudentUpdateAPIView(UpdateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentModelSerializer
+
+class StudentDetailAPIView(RetrieveAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentModelSerializer
+
+class StudentDeleteAPIView(DestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentModelSerializer
+
+class StudentProfileListAPIView(ListAPIView):
+    queryset = StudentProfile.objects.all()
+    serializer_class = StudentProfileModelSerializer
+
+class StudentProfileCreateAPIView(CreateAPIView):
+    queryset = StudentProfile.objects.all()
+    serializer_class = StudentProfileModelSerializer
+    
+class StudentProfileUpdateAPIView(UpdateAPIView):
+    queryset = StudentProfile.objects.all()
+    serializer_class = StudentProfileModelSerializer
+
+class StudentProfileDetailAPIView(RetrieveAPIView):
+    queryset = StudentProfile.objects.all()
+    serializer_class = StudentProfileModelSerializer
+
+class StudentProfileDeleteAPIView(DestroyAPIView):
+    queryset = StudentProfile.objects.all()
+    serializer_class = StudentProfileModelSerializer
+
+class ClassRoomListCreateAPI(ListCreateAPIView):
+    queryset= ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+class ClassRoomObjectAPIView(RetrieveUpdateDestroyAPIView):
+    queryset= ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+class ClassRoomViewSet(ModelViewSet):
+    queryset= ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+class StudentViewSet(ModelViewSet):
+    queryset= Student.objects.all()
+    serializer_class = StudentModelSerializer
+
+class StudentProfileViewSet(ModelViewSet):
+    queryset= StudentProfile.objects.all()
+    serializer_class = StudentProfileModelSerializer
