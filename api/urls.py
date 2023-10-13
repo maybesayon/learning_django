@@ -1,5 +1,6 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
 from .views import hello_world, HelloWorldView, StudentView, StudentFromDBView,\
 StudentFromDBListView, ProfileFromDBListView, ClassRoomFromDBView, ClassRoomFromDBListView, StudentDetailView,\
 StudentListView, ProfileListView, ClassRoomAPIView, ClassRoomCreateAPIView, ClassRoomUpdateAPIView, ClassRoomDetailAPIView,\
@@ -45,7 +46,8 @@ generic_urls = [
     path("generic-studentprofile-detail/<int:pk>/", StudentProfileDetailAPIView.as_view()),
     path("generic-studentprofile-delete/<int:pk>/", StudentProfileDeleteAPIView.as_view()),
     path("generic-classroom/", ClassRoomListCreateAPI.as_view()),
-    path("generic-classroom/<int:pk>/", ClassRoomObjectAPIView.as_view())
+    path("generic-classroom/<int:pk>/", ClassRoomObjectAPIView.as_view()),
+    path("login/",obtain_auth_token )
     
 
 ]

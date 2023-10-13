@@ -5,9 +5,12 @@ from rest_framework import status
 from rest_framework.generics import ListAPIView,\
 CreateAPIView, UpdateAPIView, RetrieveAPIView, DestroyAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.authentication import TokenAuthentication
 from CRUD.models import Student, StudentProfile, ClassRoom
 from .serializers import ClassRoomSerializer, ClassRoomModelSerializer,\
 StudentDetailSerializer, StudentModelSerializer, StudentProfileModelSerializer
+from .permissions import IsAdminUser
 def hello_world(request):
     respose = {
         "message": "Hello World. I'm learning API."
@@ -242,11 +245,29 @@ class ClassRoomObjectAPIView(RetrieveUpdateDestroyAPIView):
 class ClassRoomViewSet(ModelViewSet):
     queryset= ClassRoom.objects.all()
     serializer_class = ClassRoomModelSerializer
+    # permission_classes = [IsAuthenticated, ]
+    # authentication_classes = [TokenAuthentication, ]
+    
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [AllowAny(), ]
+        return [IsAdminUser(), ]
 
 class StudentViewSet(ModelViewSet):
     queryset= Student.objects.all()
     serializer_class = StudentModelSerializer
+    # permission_classes = [IsAuthenticated, ]
+    # authentication_classes = [TokenAuthentication, ]
 
 class StudentProfileViewSet(ModelViewSet):
     queryset= StudentProfile.objects.all()
     serializer_class = StudentProfileModelSerializer
+    # permission_classes = [IsAuthenticated, ]
+    # authentication_classes = [TokenAuthentication, ]
+
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [AllowAny(), ]
+        return [IsAdminUser(), ]
+    
+    

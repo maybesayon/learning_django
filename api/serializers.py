@@ -41,9 +41,6 @@ class StudentProfileModelSerializer(serializers.ModelSerializer):
         if request and request.method.lower()== 'get':
             fields['student']= StudentModelSerializer()
         return fields
-
-
-
    
 
     
