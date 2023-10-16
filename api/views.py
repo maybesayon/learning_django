@@ -7,6 +7,8 @@ CreateAPIView, UpdateAPIView, RetrieveAPIView, DestroyAPIView, ListCreateAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
 from CRUD.models import Student, StudentProfile, ClassRoom
 from .serializers import ClassRoomSerializer, ClassRoomModelSerializer,\
 StudentDetailSerializer, StudentModelSerializer, StudentProfileModelSerializer
@@ -245,6 +247,8 @@ class ClassRoomObjectAPIView(RetrieveUpdateDestroyAPIView):
 class ClassRoomViewSet(ModelViewSet):
     queryset= ClassRoom.objects.all()
     serializer_class = ClassRoomModelSerializer
+    filter_backends = [SearchFilter, ]
+    search_fields = ["name", ]
     # permission_classes = [IsAuthenticated, ]
     # authentication_classes = [TokenAuthentication, ]
     
@@ -254,14 +258,21 @@ class ClassRoomViewSet(ModelViewSet):
         return [IsAdminUser(), ]
 
 class StudentViewSet(ModelViewSet):
+    filter_backends = [DjangoFilterBackend, ]
+    filterset_fields =["classroom_id", "classroom__name" ]
+    permission_classes =[AllowAny, ]
     queryset= Student.objects.all()
     serializer_class = StudentModelSerializer
+
     # permission_classes = [IsAuthenticated, ]
     # authentication_classes = [TokenAuthentication, ]
 
 class StudentProfileViewSet(ModelViewSet):
     queryset= StudentProfile.objects.all()
     serializer_class = StudentProfileModelSerializer
+    filter_backends = [SearchFilter, ]
+    search_fields = ["student__name","contact" ]
+    
     # permission_classes = [IsAuthenticated, ]
     # authentication_classes = [TokenAuthentication, ]
 
